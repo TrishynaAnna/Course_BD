@@ -1,0 +1,40 @@
+
+
+{% extends "index.html" %}
+
+{% block content %}
+
+
+
+ <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Grouo id</th>
+                <th scope="col">Group name</th>
+                <th scope="col">Group topic</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for group in groups %}
+            <tr >
+                <td> {{group.group_id}} </td>
+                <td> {{group.group_name}} </td>
+                <td> {{group.group_topic}} </td>
+                <td>
+                    <button type="button" class="btn btn-warning" name="btn_edit_group" data-group_id="{{group.group_id}}">Edit</button>
+                    <button type="button" class="btn btn-danger" name="btn_delete_group" data-group_id="{{group.group_id}}">Delete</button>
+                </td>
+            </tr>
+
+        {% endfor %}
+            <tr>
+                <td> <button type="button" class="btn btn-success" name="btn_new_group">New Group</button> </td>
+            </tr>
+        </tbody>
+    </table>
+ </div>
+
+    <script src="{{ url_for('static', filename='js/group.js') }}"></script>
+
+{% endblock %}

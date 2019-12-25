@@ -1,0 +1,37 @@
+
+
+{% extends "index.html" %}
+
+{% block content %}
+
+
+
+ <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">User id</th>
+                <th scope="col">Group name</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gpoupuser in gpoupusers %}
+            <tr >
+                <td> {{gpoupuser.user_id}} </td>
+                <td> {{gpoupuser.group_id}} </td>
+                <td>
+                    <button type="button" class="btn btn-danger" name="btn_delete_gpoupuser" data-user_id="{{gpoupuser.user_id}}" data-group_id="{{gpoupuser.group_id}}">Delete</button>
+                </td>
+            </tr>
+
+        {% endfor %}
+            <tr>
+                <td> <button type="button" class="btn btn-success" name="btn_new_gpoupuser">New Group User</button> </td>
+            </tr>
+        </tbody>
+    </table>
+ </div>
+
+    <script src="{{ url_for('static', filename='js/groupuser.js') }}"></script>
+
+{% endblock %}
